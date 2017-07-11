@@ -61,7 +61,7 @@ $ python3 bars.py 'data-2897-2016-11-23.json'
 
 Biggest bar is: Спорт бар «Красная машина»
 Smallest bar is: Бар «Витамин»
-Input GPS coordinates in format Latitude, Longitude :
+Input GPS decimal coordinates in format Latitude, Longitude :
 >>> 55.78499, 37.464747
 Closest bar is: Грэйс Бар
 
