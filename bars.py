@@ -26,20 +26,20 @@ def load_json_data(file_path):
 
 
 
-def get_biggest_bar(data):
+def get_biggest_bar(bars_database):
 
-    if not data:
+    if not bars_database:
         return None
 
-    return max(data, key=lambda bar_data: bar_data['SeatsCount']).get('Name')
+    return max(bars_database, key=lambda bar_data: bar_data['SeatsCount']).get('Name')
 
 
-def get_smallest_bar(data):
+def get_smallest_bar(bars_database):
 
-    if not data:
+    if not bars_database:
         return None
 
-    return min(data, key=lambda bar_data: bar_data['SeatsCount']
+    return min(bars_database, key=lambda bar_data: bar_data['SeatsCount']
     if bar_data['SeatsCount'] > 4 else 100).get('Name')
 
 
@@ -70,15 +70,14 @@ def get_gps_distance(latitude_a, longitude_a, latitude_b, longitude_b):
     return earth_radius * (sqrt(x * x + y * y))
 
 
-def get_closest_bar(data, latitude, longitude):
+def get_closest_bar(bars_database, latitude, longitude):
 
-    if not data or not latitude or not longitude:
+    if not bars_database or not latitude or not longitude:
         return None
 
-    return min(data, key=lambda bar_data: get_gps_distance(latitude, longitude,
+    return min(bars_database, key=lambda bar_data: get_gps_distance(latitude, longitude,
                                                            float(bar_data.get('Latitude_WGS84')),
                                                            float(bar_data.get('Longitude_WGS84')))
-
                                                 if bar_data['SeatsCount'] > 4 else 1000).get('Name')
 
 
